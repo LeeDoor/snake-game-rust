@@ -1,8 +1,7 @@
-mod celltype;
-pub use celltype::CellType;
-pub use celltype::to_string;
+use crate::celltype;
+use crate::snake;
 
-type RowType = Vec<CellType>;
+type RowType = Vec<celltype::CellType>;
 type GridType = Vec<RowType>;
 
 const WIDTH: usize = 20;
@@ -13,7 +12,7 @@ pub fn generate_grid() ->GridType {
     for i in 0..WIDTH{
         grid.push(RowType::with_capacity(HEIGHT));
         for _j in 0..HEIGHT {
-            grid[i].push(CellType::Ground);
+            grid[i].push(celltype::CellType::Ground);
         }
     }
     return grid;
@@ -22,7 +21,7 @@ pub fn generate_grid() ->GridType {
 pub fn show_grid(grid: &GridType) {
     for col in grid{
         for cell in col {
-            print!("{} ", to_string(cell));
+            print!("{} ", celltype::to_string(cell));
         }
         print!("\n");
     }
