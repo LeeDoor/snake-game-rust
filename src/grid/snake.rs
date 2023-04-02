@@ -5,16 +5,22 @@ mod point;
 use point::Point;
 
 const START_DIR: Direction = Direction::Left;
-const START_SNAKE_LENGTH: u32 = 5;
+const START_SNAKE_LENGTH: usize = 5;
 const START_HEAD_POSITION: Point = Point{x: 5, y: 5};
 
-struct SnakeCell {
+pub struct SnakeCell {
     pos: Point
 }
 
-struct Snake {
-    body: Vec<SnakeCell>,
-    direction: Direction
+pub struct Snake {
+    pub body: Vec<SnakeCell>,
+    pub direction: Direction
+}
+
+impl SnakeCell {
+    pub fn getPos(&self) -> &Point {
+        &self.pos
+    }
 }
 
 impl Snake {
