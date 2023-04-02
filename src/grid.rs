@@ -1,5 +1,6 @@
 mod celltype;
 mod snake;
+mod point;
 use snake::Snake;
 
 type RowType = Vec<celltype::CellType>;
@@ -47,7 +48,7 @@ impl Grid{
 
     fn apply_snake(&mut self) {
         for body in &self.snake.body {
-            let cur_pos = body.getPos();
+            let cur_pos = body.get_pos();
             self.val[cur_pos.x][cur_pos.y] = celltype::CellType::Snake;
         }
     }
