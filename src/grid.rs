@@ -1,17 +1,17 @@
-mod celltype;
-mod snake;
-mod point;
+pub mod celltype;
+pub mod snake;
+pub mod point;
 use snake::Snake;
 
 type RowType = Vec<celltype::CellType>;
 type GridType = Vec<RowType>;
 
-const WIDTH: usize = 20;
-const HEIGHT: usize = 20;
+const WIDTH: usize = 8;
+const HEIGHT: usize = 8;
 
 pub struct Grid {
     val: GridType,
-    snake: Snake
+    pub snake: Snake
 }
 
 impl Grid{
@@ -23,7 +23,7 @@ impl Grid{
     }
     
     pub fn show_grid(&mut self) {
-        self.apply_snake();
+        self.update();
 
         for y in 0..self.val[0].len() {
             let mut line = String::with_capacity(WIDTH);
@@ -46,10 +46,16 @@ impl Grid{
         return grid;
     }
 
+    fn update(&mut self) {
+        self.val = Grid::generate_grid();
+        self.apply_snake();
+
+    }
+
     fn apply_snake(&mut self) {
         for body in &self.snake.body {
             let cur_pos = body.get_pos();
-            self.val[cur_pos.x][cur_pos.y] = celltype::CellType::Snake;
+            self.val[cur_pos.x as usize][cur_pos.y as usize] = celltype::CellType::Snake;
         }
     }
 }
