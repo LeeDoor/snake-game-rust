@@ -1,5 +1,5 @@
-use crate::celltype;
-use crate::snake;
+mod celltype;
+mod snake;
 
 type RowType = Vec<celltype::CellType>;
 type GridType = Vec<RowType>;

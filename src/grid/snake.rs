@@ -1,7 +1,7 @@
-
-use crate::point;
-use crate::direction;
+mod direction;
 use direction::Direction;
+
+mod point;
 use point::Point;
 
 const START_DIR: Direction = Direction::Left;
