@@ -23,11 +23,14 @@ impl Grid{
     
     pub fn show_grid(&mut self) {
         self.apply_snake();
-        for col in &self.val{
-            for cell in col {
-                print!("{} ", celltype::to_string(cell));
+
+        for y in 0..self.val[0].len() {
+            let mut line = String::with_capacity(WIDTH);
+            for x in 0..self.val.len(){
+                line.push(celltype::to_string(&self.val[x][y]));
+                line.push(' ');
             }
-            print!("\n");
+            print!("{}\n", line);
         }
     }
 
@@ -44,8 +47,8 @@ impl Grid{
 
     fn apply_snake(&mut self) {
         for body in &self.snake.body {
-            let curPos = body.getPos();
-            self.val[curPos.x][curPos.y] = celltype::CellType::Snake;
+            let cur_pos = body.getPos();
+            self.val[cur_pos.x][cur_pos.y] = celltype::CellType::Snake;
         }
     }
 }

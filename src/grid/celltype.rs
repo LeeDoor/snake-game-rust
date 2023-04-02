@@ -4,10 +4,10 @@ pub enum CellType {
     Snake
 }
 
-pub fn to_string(t: &CellType) -> String{
+pub fn to_string(t: &CellType) -> char{
     return match t {
-        CellType::Ground => "-".to_string(),
-        CellType::Fruit => "@".to_string(),
-        CellType::Snake => "*".to_string()
+        CellType::Ground => '-',
+        CellType::Fruit => '@',
+        CellType::Snake => '*'
     }
 }
